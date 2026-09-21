@@ -695,8 +695,8 @@ class PagedAttentionMemoryHandler:
             m, n = self._solve_for_peak(peak_deltas, max_batch_tokens, num_blocks, cache_fill_per_batch)
             solutions.append((m, n))
 
-        final_m = min([solution[0] for solution in solutions])
-        final_n = min([solution[1] for solution in solutions])
+        final_m = min(solution[0] for solution in solutions)
+        final_n = min(solution[1] for solution in solutions)
         return final_m, final_n
 
     def _solve_for_peak(
